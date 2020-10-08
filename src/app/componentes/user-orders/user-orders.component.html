@@ -1,0 +1,134 @@
+<h2 id="user-orders">Tus pedidos</h2>
+<div class="card" *ngFor="let order of myOrders.orders">
+    <div class="info-container">
+        <ng-container *ngIf="order.status=='pendiente' || order.status=='completada' || order.status=='en-espera'">
+            <div class="line"><span class="brand-name">{{order.brand | uppercase}}</span> 
+                <div *ngIf="order.type=='divided'"><span class="info">Costo de envio actual: <span class="price">${{order.details.currentCost | number}}</span></span></div>
+                <div *ngIf="order.type=='maximum-cost'"><span class="info">Integrantes necesarios: <span class="price">{{order.details.peopleNeeded}} mas</span></span></div>
+                <div *ngIf="order.type=='free'"><span class="info">Monto faltante: <span class="price">${{order.details.goalAmount - order.details.currentAmount}}</span></span></div>
+            </div>
+            <div class="line"><span class="delivery-type">Envio {{order.delivery}}</span> <div><span class="info" >Finaliza en: <span class="price">{{order.daysLeft}} dias</span></span></div></div>
+            <div class="line cancel"> <div [ngClass]="['status',order.status]">{{(order.status==='pendiente' || order.status==='completada') ? 'Pendiente' : order.status | titlecase | syncClass}}</div> <div><span class="cancel">Cancelacion {{order.cancelation ? 'Activa' : 'Inactiva'}}</span></div></div>
+        </ng-container>
+        <ng-container *ngIf="order.status=='en-camino'">
+            <div class="line"><span class="brand-name">{{order.brand | uppercase}}</span> 
+                <div *ngIf="order.type=='divided' || order.type=='maximum-cost'"><span class="info">Costo de envio: <span class="price">${{(order.deliveryCost / order.details.peopleJoined) | number}}</span></span></div>
+                <div *ngIf="order.type=='free'"><span class="info">Costo de envio: <span class="price">Gratis</span></span></div>
+            </div>
+            <div class="line"><span class="delivery-type">Envio {{order.delivery}}</span> <div><span class="info" >#Orden: <span class="price">{{order._id | uppercase | truncate:10}}</span></span></div></div>
+            <div class="line cancel"> <div [ngClass]="['status',order.status]">{{order.status | titlecase | syncClass}}</div> <div><span class="cancel"><a class="track-link" *ngFor="let link of order.trackLinks" [href]="link" target="_blank">Link de rastreo</a></span></div></div>
+        </ng-container>
+        <ng-container *ngIf="order.status=='recibida'">
+            <div class="line"><span class="brand-name">{{order.brand | uppercase}}</span> <div><span class="info">Cargo de aduana: <span class="price">${{order.aduanaFee | number}}</span></span></div></div>
+            <div class="line"><span class="delivery-type">Envio {{order.delivery}}</span> 
+                <div *ngIf="order.type=='divided' || order.type=='maximum-cost'"><span class="info" >Costo de envio: <span class="price">${{order.details.currentCost | number}}</span></span></div>
+                <div *ngIf="order.type=='free'"><span class="info" >Costo de envio: <span class="price">Gratis</span></span></div>
+            </div>
+            <div class="line cancel"> <div [ngClass]="['status',order.status]">{{order.status | titlecase | syncClass}}</div><div><span class="info" >#Orden: <span class="price">{{order.suborder}}</span></span></div></div>
+        </ng-container>
+        <ng-container *ngIf="(order.type=='free' || order.type=='maximum-cost') && order.status=='cancelada'">
+            <div class="order-canceled">
+                <div class="order-info">
+                    <div><span class="brand-name">{{order.brand | uppercase}}</span></div>
+                    <div><span>Envio {{order.delivery}}</span></div>
+                    <div><div [ngClass]="['status',order.status]">{{order.status | titlecase | syncClass}}</div></div>
+                </div>
+                <div class="cancel-details"><span>{{order.cancelReason}}La orden fue cancelada por no alcanzar los integrantes necesarios</span></div>
+            </div>
+        </ng-container>
+        
+        <div class="items-scroll">
+            <div *ngFor="let item of order.items">
+                <a [href]="item.link" target="_blank">
+                    <img  class="item" [src]="item.imageLink" alt="">
+                    <div class="item-title">{{item.itemTitle | truncate:70}}</div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="!myOrders.orders" class="loader">Loading...</div>
+
+<div *ngIf="myOrders.orders && myOrders.orders.length == 0" id="orders-empty">
+    <p id="orders-empty-p">Aun no has hecho ningun pedido :(</p>
+    <div id="orders-empty-button" routerLink="/buscar" >Buscar una orden</div>
+</div>
+
+<!--<div class="blank"></div>
+<div class="card" *ngFor="let order of orders">
+    <div class="info-container">
+
+        <ng-container *ngIf="order.type=='dividida' && (order.status=='pendiente' || order.status=='en-espera')">
+            <div class="line"><span class="brand-name">ASOS</span> <div><span class="info">Costo de envio actual: <span class="price">${{order.currentCost | number}}</span></span></div></div>
+            <div class="line"><span class="delivery-type">Envio {{order.delivery}}</span> <div><span class="info" >Finaliza en: <span class="price">{{order.daysLeft}} dias</span></span></div></div>
+            <div class="line cancel"> <div [ngClass]="['status',order.status]">{{order.status | titlecase | syncClass}}</div> <div><span class="cancel">Cancelacion {{order.cancelation}}</span></div></div>
+        </ng-container>
+        <ng-container *ngIf="order.type=='dividida' && order.status=='en-camino'">
+            <div class="line"><span class="brand-name">ASOS</span> <div><span class="info">Costo de envio: <span class="price">${{order.currentCost | number}}</span></span></div></div>
+            <div class="line"><span class="delivery-type">Envio {{order.delivery}}</span> <div><span class="info" >#Orden: <span class="price">{{order.suborder}}</span></span></div></div>
+            <div class="line cancel"> <div [ngClass]="['status',order.status]">{{order.status | titlecase | syncClass}}</div> <div><span class="cancel"><a class="track-link" *ngFor="let link of order.trackLinks" [href]="link" target="_blank">Link de rastreo</a></span></div></div>
+        </ng-container>
+        <ng-container *ngIf="order.type=='dividida' && order.status=='recibida'">
+            <div class="line"><span class="brand-name">ASOS</span> <div><span class="info">Cargo de aduana: <span class="price">${{order.aduanaFee | number}}</span></span></div></div>
+            <div class="line"><span class="delivery-type">Envio {{order.delivery}}</span> <div><span class="info" >Costo de envio: <span class="price">${{order.currentCost | number}}</span></span></div></div>
+            <div class="line cancel"> <div [ngClass]="['status',order.status]">{{order.status | titlecase | syncClass}}</div><div><span class="info" >#Orden: <span class="price">{{order.suborder}}</span></span></div></div>
+        </ng-container>
+
+
+        <ng-container *ngIf="order.type=='costo-max' && (order.status=='pendiente' || order.status=='en-espera')">
+            <div class="line"><span class="brand-name">ASOS</span> <div><span class="info">Integrantes necesarios: <span class="price">{{order.peopleNeeded}} mas</span></span></div></div>
+            <div class="line"><span class="delivery-type">Envio {{order.delivery}}</span> <div><span class="info" >Finaliza en: <span class="price">{{order.daysLeft}} dias</span></span></div></div>
+            <div class="line cancel"> <div [ngClass]="['status',order.status]">{{order.status | titlecase | syncClass}}</div> <div><span class="cancel">Cancelacion {{order.cancelation}}</span></div></div>
+        </ng-container>
+        <ng-container *ngIf="order.type=='costo-max' && order.status=='en-camino'">
+            <div class="line"><span class="brand-name">ASOS</span> <div><span class="info">Costo de envio: <span class="price">${{order.currentCost | number}}</span></span></div></div>
+            <div class="line"><span class="delivery-type">Envio {{order.delivery}}</span> <div><span class="info" >#Orden: <span class="price">{{order.suborder}}</span></span></div></div>
+            <div class="line cancel"> <div [ngClass]="['status',order.status]">{{order.status | titlecase | syncClass}}</div> <div><span class="cancel"><a class="track-link" *ngFor="let link of order.trackLinks" [href]="link" target="_blank">Link de rastreo</a></span></div></div>
+        </ng-container>
+        <ng-container *ngIf="order.type=='costo-max' && order.status=='recibida'">
+            <div class="line"><span class="brand-name">ASOS</span> <div><span class="info">Cargo de aduana: <span class="price">${{order.aduanaFee}}</span></span></div></div>
+            <div class="line"><span class="delivery-type">Envio {{order.delivery}}</span> <div><span class="info" >Costo de envio: <span class="price">${{order.currentCost | number}}</span></span></div></div>
+            <div class="line cancel"> <div [ngClass]="['status',order.status]">{{order.status | titlecase | syncClass}}</div><div><span class="info" >#Orden: <span class="price">{{order.suborder}}</span></span></div></div>
+        </ng-container>
+
+  
+        <ng-container *ngIf="order.type=='free' && (order.status=='pendiente' || order.status=='en-espera')">
+            <div class="line"><span class="brand-name">ASOS</span> <div><span class="info">Monto faltante: <span class="price">${{order.goalAmount - order.currentAmount}}</span></span></div></div>
+            <div class="line"><span class="delivery-type">Envio {{order.delivery}}</span> <div><span class="info" >Finaliza en: <span class="price">{{order.daysLeft}} dias</span></span></div></div>
+            <div class="line cancel"> <div [ngClass]="['status',order.status]">{{order.status | titlecase | syncClass}}</div> <div><span class="cancel">Cancelacion {{order.cancelation}}</span></div></div>
+        </ng-container>
+        <ng-container *ngIf="order.type=='free' && order.status=='en-camino'">
+            <div class="line"><span class="brand-name">ASOS</span> <div><span class="info">Costo de envio: <span class="price">Gratis</span></span></div></div>
+            <div class="line"><span class="delivery-type">Envio {{order.delivery}}</span> <div><span class="info" >#Orden: <span class="price">{{order.suborder}}</span></span></div></div>
+            <div class="line cancel"> <div [ngClass]="['status',order.status]">{{order.status | titlecase | syncClass}}</div> <div><span class="cancel"><a class="track-link" *ngFor="let link of order.trackLinks" [href]="link" target="_blank">Link de rastreo</a></span></div></div>
+        </ng-container>
+        <ng-container *ngIf="order.type=='free' && order.status=='recibida'">
+            <div class="line"><span class="brand-name">ASOS</span> <div><span class="info">Cargo de aduana: <span class="price">${{order.aduanaFee | number}}</span></span></div></div>
+            <div class="line"><span class="delivery-type">Envio {{order.delivery}}</span> <div><span class="info" >Costo de envio: <span class="price">Gratis</span></span></div></div>
+            <div class="line cancel"> <div [ngClass]="['status',order.status]">{{order.status | titlecase | syncClass}}</div><div><span class="info" >#Orden: <span class="price">{{order.suborder}}</span></span></div></div>
+        </ng-container>
+
+
+        <ng-container *ngIf="(order.type=='free' || order.type=='costo-max') && order.status=='cancelada'">
+            <div class="order-canceled">
+                <div class="order-info">
+                    <div><span class="brand-name">ASOS</span></div>
+                    <div><span>Envio {{order.delivery}}</span></div>
+                    <div><div [ngClass]="['status',order.status]">{{order.status | titlecase | syncClass}}</div></div>
+                </div>
+                <div class="cancel-details"><span>{{order.cancelReason}}La orden fue cancelada por no alcanzar los integrantes necesarios</span></div>
+            </div>
+        </ng-container>
+        <div class="items-scroll">
+            <div *ngFor="let item of order.items">
+                <a [href]="item.link" target="_blank">
+                    <img  class="item" [src]="item.imageLink" alt="">
+                    <div class="item-title">{{item.itemTitle | truncate}}</div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+-->

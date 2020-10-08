@@ -1,0 +1,20 @@
+div#button{
+    text-align: center;
+    padding-top: 9px;
+    padding-bottom: 9px;
+    width: 90%;
+    margin-left: 5%;
+    color: white;
+    background-color: rgb(96, 101, 255);
+    position: fixed;
+    bottom: 10px;
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.51);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.51);
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.51);
+}
+
+h2{
+    font-weight: 400;
+    margin: 0;
+    font-size: 118%;
+}

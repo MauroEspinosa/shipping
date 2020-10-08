@@ -1,0 +1,27 @@
+<div *ngIf="!loading" id="form-container">
+    <span class="section">Editar informacion</span>
+    <form [formGroup]="editInfo" (ngSubmit)="onSubmit()">
+        <fieldset [class.invalid]="editInfo.get('name').invalid && editInfo.get('name').touched">
+            <legend>Nombre:</legend>
+            <input formControlName="name" class="info" type="text">
+       </fieldset>
+    
+       <fieldset [class.invalid]="editInfo.get('email').invalid && editInfo.get('email').touched">
+            <legend>Email:</legend>
+            <input formControlName="email" class="info" type="email">
+        </fieldset>
+    
+        <fieldset [class.invalid]="editInfo.get('phone').invalid && editInfo.get('phone').touched">
+            <legend>Numero:</legend>
+            <div id="number">
+                <input formControlName="phone" class="info" type="number">
+                <img id="alert" (click)="alertNumber()" src="assets/imagenes/black-alert.png" alt="">
+            </div>
+        </fieldset>
+
+        <input type="submit" value="Guardar cambios">
+    </form>
+</div>
+
+<div *ngIf="loading" class="loader">Loading...</div>
+

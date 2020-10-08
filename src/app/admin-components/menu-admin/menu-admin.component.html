@@ -1,0 +1,7 @@
+<ul id="menu">
+    <li routerLinkActive="active-link" [routerLink]="['/admin', { outlets: { primary:['pendientes'] } }]" class="menu-option"><img class="menu-option" src="assets/imagenes/pendientes.png" alt=""><span>Pendientes</span></li>
+    <li routerLinkActive="active-link" [routerLink]="['/admin', { outlets: { primary:['guias'] } }]" class="menu-option"><img class="menu-option" src="assets/imagenes/agregar-guia.png" alt=""><span>Agregar Guia</span></li>
+    <li routerLinkActive="active-link" [routerLink]="['/admin', { outlets: { primary:['realizadas']}}]" class="menu-option"><img class="menu-option" src="assets/imagenes/realizadas.png" alt=""><span>Realizadas</span></li>
+    <li routerLinkActive="active-link" (click)="logout()" class="menu-option"><img class="menu-option" src="assets/imagenes/cloud_off.png" alt=""><span>Cerrar Sesion</span></li>
+    <li routerLinkActive="active-link" (click)="check()" class="menu-option"><img class="menu-option" src="assets/imagenes/realizadas.png" alt=""><span>check</span></li>
+</ul>

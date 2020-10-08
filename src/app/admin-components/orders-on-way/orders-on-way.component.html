@@ -1,0 +1,15 @@
+<div id="container">
+    <div class="card" *ngFor="let item of orders.waitingOrders | searchbar: searchbar.searchString">
+        <div class="info-container">
+            <div [routerLink]="['/admin/realizadas/en-camino', item.brandOrderNumber]" class="line"><span class="brand-name">{{item.brand | uppercase}}</span> <div><span>Orden: <span>{{item.brandOrderNumber}}</span></span></div></div>
+            <div class="line"><span class="delivery-type colored">Envio {{item.delivery}}</span> <div><span>Links de rastreo: <span (click)="selectPackage(item.trackingNumbers[0]._id)" class="colored" [ngClass]="{'notReceived': !item.trackingNumbers[0].received, 'selected': item.trackingNumbers[0]._id==trackingId}">{{item.trackingNumbers[0].number}}</span></span></div></div>
+            <div class="line right-sided" *ngFor="let track of item.trackingNumbers | slice:1:item.trackingNumbers.length"> <div><span (click)="selectPackage(track._id)" class="colored" [ngClass]="{'notReceived': !track.received, 'selected': track._id==trackingId}">{{track.number}}</span></div></div>
+            <div class="line confirm-button"> <div><button (click)="receivedPackages(item.brandOrderNumber)!='Completa' && confirmPackage(item._id)">{{receivedPackages(item.brandOrderNumber)=='Completa' ? 'Completa' : 'Confirmar '+ receivedPackages(item.brandOrderNumber) + '/' + item.trackingNumbers.length}}</button></div></div>
+        </div>
+    </div>
+</div>
+
+<h2 class="no-results" *ngIf="orders.waitingOrders && ((orders.waitingOrders | searchbar: searchbar.searchString).length==0) && orders.waitingOrders.length>0">Sin Resultados</h2>
+
+<pre *ngIf="orders.waitingOrders && orders.waitingOrders.length==0">No hay ordenes en camino
+en este momento</pre>

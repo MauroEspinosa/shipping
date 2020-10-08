@@ -1,0 +1,143 @@
+@media only screen and (min-height: 500px) {
+  .loader,.loader:before,.loader:after {
+    border-radius: 50%;
+    width: 2.5em;
+    height: 2.5em;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation: load7 1.8s infinite ease-in-out;
+    animation: load7 1.8s infinite ease-in-out;
+  }
+  .loader {
+    color: #6065ff;
+    font-size: 10px;
+    margin: 130px auto;
+    position: relative;
+    text-indent: -9999em;
+    -webkit-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-animation-delay: -0.16s;
+    animation-delay: -0.16s;
+  }
+  .loader:before,.loader:after {
+    content: '';
+    position: absolute;
+    top: 0;
+  }
+  .loader:before {
+    left: -3.5em;
+    -webkit-animation-delay: -0.32s;
+    animation-delay: -0.32s;
+  }
+  .loader:after {
+    left: 3.5em;
+  }
+  @-webkit-keyframes load7 {
+    0%,
+    80%,
+    100% {
+      box-shadow: 0 2.5em 0 -1.3em;
+    }
+    40% {
+      box-shadow: 0 2.5em 0 0;
+    }
+  }
+  @keyframes load7 {
+    0%,
+    80%,
+    100% {
+      box-shadow: 0 2.5em 0 -1.3em;
+    }
+    40% {
+      box-shadow: 0 2.5em 0 0;
+    }
+  }
+
+
+  div.card{
+      width: 92%;
+      height: auto;
+      background-color: #F6F4F4;
+      /*-webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.51);
+      -moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.51);
+      box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.51);*/
+      border-radius: 16px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 25px;
+  }
+
+  div.info-container{
+      padding-top: 20px;
+      padding-bottom: 20px;
+  }
+
+  div.line{
+      display: flex;
+      width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+      justify-content: space-between;
+  }
+
+  span.brand-name{
+      font-weight: 600;
+  }
+
+  span.price,span.delivery-type,span.cancel, span.participants{
+      color: #6065ff;
+      font-weight: 600;
+  }
+
+  span.info{
+    font-size: 95%;
+  }
+
+  span.delivery-type{
+      font-size: 85%;
+  }
+
+  div.cancel{
+      justify-content: flex-end;
+      font-size: 100%;
+  }
+
+  div.end-joined{
+      padding-top: 20px
+  }
+
+  span.end{
+      margin-top: auto;
+      margin-bottom: auto;
+      font-size: 85%;
+  }
+
+  div.joined{
+      display: flex;
+  }
+
+  div.profile-img{
+      height: 15px;
+      width: 15px;
+      border-radius: 100%;
+      background-image: url("../../../assets//imagenes/defaut.png");
+      margin: auto;
+      margin-left: 1px;
+      margin-right: 1px;
+      background-size: contain;
+  }
+
+  pre{
+    font-family: 'Segoe UI';
+    font-size: 200%;
+    margin-top: 17%;
+    text-align: center;
+}
+}
+
+@media only screen and (min-height: 700px){
+  .loader{
+    margin: 190px auto;
+  }
+}

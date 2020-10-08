@@ -1,0 +1,15 @@
+<div *ngIf="userData.data.payments.length > 0 " id="toggle-slide-container">
+    <div *ngFor="let payment of userData.data.payments as payments, index as i">
+        <div class="clickable" (click)="toggleSlide('item'+i)"><span class="item-name">Cargo por ${{payment.amount | number}}</span><img class="arrow" [ngClass]="{'rotate': visible=='item'+i}" src="assets/imagenes/arrow.png"></div>
+        <div class="toggle-slide" [ngClass]="{'is-visible': visible=='item'+i}">
+            <p class="item-content">Se realizo este cobro por la orden <span class="num-order">{{payment.numOrder}}</span> el día <span class="day">{{payment.day}}</span></p>
+        </div>
+        <div *ngIf="i!=payments.length-1" class="separator"></div>
+    </div>
+</div>
+
+<div *ngIf="userData.data.payments.length == 0" id="no-payments">
+    <p class="highlight">Aquí se mostrara la información de tus pagos una vez que se haya realizado alguno</p>
+    <p>Para seguridad de ambas partes, únicamente aceptamos pagos vía PayPal. Si no tienes una cuenta te invitamos a crearla haciendo click en su logo</p>
+    <img id="paypal" src="assets/imagenes/paypal.png" alt="">
+</div>

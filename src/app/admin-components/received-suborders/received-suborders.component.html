@@ -1,0 +1,26 @@
+<div id="container">
+    <ng-container *ngFor="let suborder of orders.receivedSuborders | searchbar: searchbar.searchString">
+    <div class="card">
+        <div class="info-container">
+            <div class="line"><span class="brand-name" [ngClass]="{'sent':suborder.status=='sent'}" [title]="suborder.user.name">{{suborder.user.name | truncate:15}}</span> <div><span [ngClass]="{'sent':suborder.status=='sent'}" class="colored">Suborden {{suborder.suborder}}</span></div></div>
+            <div class="line right-sided"> <div><button class="assign-delivery" [disabled]="suborder.status=='sent'" [ngClass]="{'sent':suborder.status=='sent'}" (click)="saveSuborderId(suborder.suborder)">Asignar repartidor</button></div></div>
+            <div class="line"><span [title]="suborder.user.direction.street">{{suborder.user.direction.street | truncate:20}}</span></div>
+            <div class="line"><span>{{suborder.user.phone}}</span></div>
+        </div>
+    </div>
+    </ng-container>
+</div>
+
+<h2 class="no-results" *ngIf="(orders.receivedSuborders | searchbar: searchbar.searchString).length==0 && orders.receivedSuborders.length>0">Sin Resultados</h2>
+
+<prompt *ngIf="showPrompt" [@fade-in-out]>
+    <h2>Introduce el ID</h2>
+    <form [formGroup]="deliveryMan" (ngSubmit)="assignDelivery()">
+        <input formControlName="id" type="number" placeholder="Numero de repartidor">
+        <button type="submit" class="prompt-confirm">Confirmar</button>
+        <button (click)="showPrompt=!showPrompt" class="prompt-cancel">Cancelar</button>
+    </form>
+</prompt>
+
+<pre *ngIf="orders && orders.receivedSuborders.length==0">No hay guias 
+pendientes</pre>

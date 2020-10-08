@@ -1,0 +1,33 @@
+<div *ngFor="let order of orders.ordersAvalible" class="card" [routerLink]="['order']" [queryParams]="{store:order.brand,id:order._id}">
+    <div *ngIf="order.type=='divided'" class="info-container">
+        <div class="line"><span class="brand-name">{{order.brand | uppercase}}</span> <div><span class="info">Costo de envio actual: <span class="price">${{(order.deliveryCost / order.details.peopleJoined) | number}}</span></span></div></div>
+        <div class="line"><span class="delivery-type">Envio {{order.delivery}}</span> <div><span class="info" >Costo envio si te unes: <span class="price">${{order.deliveryCost / (order.details.peopleJoined + 1) | number}}</span></span></div></div>
+        <div class="line cancel"><div><span class="cancel">Cancelacion inactiva</span></div></div>
+        <div class="line end-joined"><span class="end">Finaliza en: {{order.daysLeft}} dias</span><div *ngIf="order.participants.length>0" class="joined">Participantes: <div *ngFor="let participant of order.participants | slice:0:3" class="profile-img"></div> <span class="participants" *ngIf="order.participants.length>3">{{order.participants.length-3}}+</span> </div> <span *ngIf="order.participants<1">Se el primero en unirte</span> </div>
+    </div>
+
+    <div *ngIf="order.type=='maximum-cost'"  class="info-container">
+        <div class="line"><span class="brand-name">{{order.brand | uppercase}}</span> <div><span class="info">{{order.cancelation ? 'Pago maximo de envio:' : 'Costo actual de envio:'}} <span class="price">${{order.cancelation ? order.details.maxCost : (order.deliveryCost / order.details.peopleJoined) | number}}</span></span></div></div>
+        <div class="line"><span class="delivery-type">Envio {{order.delivery}}</span> <div><span class="info">Integrantes necesarios: <span class="price">{{order.cancelation ? (order.details.peopleNeeded - order.details.peopleJoined) : '0'}} mas</span></span></div></div>
+        <div class="line cancel"><div><span class="cancel">Cancelacion {{order.cancelation ? 'activa' : 'inactiva'}}</span></div></div>
+        <div class="line end-joined"><span class="end">Finaliza en: {{order.daysLeft}} dias</span><div *ngIf="order.participants.length>0" class="joined">Participantes: <div *ngFor="let participant of order.participants | slice:0:3" class="profile-img"></div> <span class="participants" *ngIf="order.participants.length>3">{{order.participants.length-3}}+</span> </div> <span *ngIf="order.participants<1">Se el primero en unirte</span> </div>
+    </div>
+
+    <div *ngIf="order.type=='free'" class="info-container">
+        <div class="line"><span class="brand-name">{{order.brand | uppercase}}</span> <div><span class="info">Monto total meta: <span class="price">${{order.details.goalAmount | number}}</span></span></div></div>
+        <div class="line"><span class="delivery-type">Envio {{order.delivery}}</span> <div><span class="info">Monto total actual: <span class="price">${{order.details.currentAmount | number}}</span></span></div></div>
+        <div class="line cancel"><div><span class="cancel">Cancelacion {{order.cancelation ? 'activa' : 'inactiva'}}</span></div></div>
+        <div class="line end-joined"><span class="end">Finaliza en: {{order.daysLeft}} dias</span><div *ngIf="order.participants.length>0" class="joined">Participantes: <div *ngFor="let participant of order.participants | slice:0:3" class="profile-img"></div> <span class="participants" *ngIf="order.participants.length>3">{{order.participants.length-3}}+</span> </div> <span *ngIf="order.participants<1">Se el primero en unirte</span> </div>
+    </div>
+</div>
+<br>
+<br>
+<br>
+
+<pre *ngIf="orders.ordersAvalible && orders.ordersAvalible.length==0">No hay opciones
+disponibles
+</pre>
+    
+
+
+<div *ngIf="!orders.ordersAvalible" class="loader">Loading...</div>

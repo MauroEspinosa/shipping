@@ -1,0 +1,52 @@
+<div class="details-container" *ngIf="orderDetails.type=='maximum-cost'">
+    <div class="line brand" *ngIf="orderDetails.cancelation"><h2>ASOS</h2><div><span>Pago maximo de envio: </span><span class="colored">${{orderDetails.details.maxCost | number}}</span></div></div>
+    <div class="line brand" *ngIf="!orderDetails.cancelation"><h2>ASOS</h2><div><span>Costo actual de envio: </span><span class="colored">${{(orderDetails.deliveryCost / orderDetails.details.peopleJoined) | number}}</span></div></div>
+    <div class="line"><span class="colored delivery">Envio {{orderDetails.delivery}}</span><div><span>Integrantes necesarios: </span><span class="colored">{{(orderDetails.details.peopleNeeded - orderDetails.details.peopleJoined)<= 0 ? '0' : orderDetails.details.peopleNeeded - orderDetails.details.peopleJoined}} mas</span></div></div>
+    <div class="line days-left"><div> Finaliza en: <span class="colored">{{orderDetails.daysLeft}} dias</span></div></div>
+    <hr>
+    <h2>Cancelacion {{orderDetails.cancelation ? 'activa' : 'inactiva'}}</h2>
+    <!--Se cambia el estado de la cancelacion en backend dependiendo del numero de participantes (orderDetails.deliveryCost / orderDetails.details.peopleJoined >orderDetails.details.maxCost)-->
+    <p *ngIf="orderDetails.cancelation">Si en {{orderDetails.daysLeft}} días no se reúnen al menos los {{orderDetails.details.peopleNeeded - orderDetails.details.peopleJoined}} integrantes necesarios para que el costo de envió sea menor o igual a ${{orderDetails.details.maxCost | number}}, la orden no se realizara y no se te cobrara nada </p>
+    <p *ngIf="!orderDetails.cancelation">Se ha alcanzado el numero necesario de participantes por lo que la orden se realizara sin excepción dentro de {{orderDetails.daysLeft}} dias. Aun puedes unirte durante dicho periodo</p>
+    <hr>
+    <div class="line max-cost">
+    <pre><h2 class="pre">Costo actual de
+envio</h2></pre><div class="max-cost-price">${{(orderDetails.deliveryCost / orderDetails.details.peopleJoined) | number}} MXN</div>
+    </div>
+    <p>Este costo no es fijo. Es el resultado de dividir el costo de envio de la tienda entre los particicpantes de la orden. Si te unes el costo bajara a ${{orderDetails.deliveryCost / (orderDetails.details.peopleJoined + 1) | number}}</p>
+</div>
+
+<div class="details-container" *ngIf="orderDetails.type=='divided'">
+    <div class="line brand"><h2>ASOS</h2><div><span>Costo de envio actual: </span><span class="colored">${{(orderDetails.deliveryCost / orderDetails.details.peopleJoined) | number}}</span></div></div>
+    <div class="line"><span class="colored delivery">Envio express</span><div><span>Costo envio si te unes: </span><span class="colored">${{orderDetails.deliveryCost / (orderDetails.details.peopleJoined + 1) | number}}</span></div></div>
+    <div class="line days-left"><div> Finaliza en: <span class="colored">6 dias</span></div></div>
+    <hr>
+    <h2>Cancelacion inactiva</h2>
+    <p>El pedido se realizara dentro de {{orderDetails.daysLeft}} días, sin ninguna condición</p>
+    <hr>
+    <h2>Costo de envio</h2>
+    <p>El costo de envió será dividido entre las personas que se hayan unido a la orden una vez pasados los {{orderDetails.daysLeft}} días de espera. 
+       Sera gratis si se alcanza el monto requerido </p>
+</div>
+
+<div class="details-container" *ngIf="orderDetails.type=='free'">
+    <div class="line brand"><h2>ASOS</h2><div><span>Monto total meta: </span><span class="colored">${{orderDetails.details.goalAmount | number}}</span></div></div>
+    <div class="line"><span class="colored delivery">Envio express</span><div><span>Monto total actual: </span><span class="colored">${{orderDetails.details.currentAmount | number}}</span></div></div>
+    <div class="line days-left"><div> Finaliza en: <span class="colored">6 dias</span></div></div>
+    <hr>
+    <h2>Cancelacion {{orderDetails.cancelation ? 'activa' : 'inactiva'}}</h2>
+    <p *ngIf="orderDetails.cancelation">Si en {{orderDetails.daysLeft} días no se reúne el monto faltante necesario para obtener el envió gratis, no se realizara el pedido y por lo tanto no se te cobrara nada</p>
+    <p *ngIf="!orderDetails.cancelation">Se ha alcanzado el monto necesario para obtener el envio gratis por lo que la orden se realizara sin excepción dentro de {{orderDetails.daysLeft}} dias. Aun puedes unirte durante dicho periodo</p>
+    <hr>
+    <h2>Costo de envio</h2>
+    <p *ngIf="orderDetails.cancelation">El envió será gratis si se alcanza el monto meta en un perido de {{orderDetails.daysLeft}} dias, sino, la orden sera cancelada y no se te cobrara nada</p>
+    <p *ngIf="!orderDetails.cancelation">El costo de envio sera gratis, debido a que ya se ha alcanzado el monto meta de al orden</p>
+    <hr>
+    <h2>Montos</h2>
+    <p>Monto total meta: Es el total en pesos mexicanos que se quiere alcanzar. Corresponde a la suma de los precios de todas las prendas agregadas <br>
+       Monto total actual: Corresponde al total que se ha alcanzado hasta el momento entre todos los integrantes de la orden</p>
+</div>
+<br>
+<br>
+<br>
+<br>

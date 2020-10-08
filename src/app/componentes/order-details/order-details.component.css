@@ -1,0 +1,60 @@
+div.details-container{
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+div.line{
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: space-between;
+    line-height: 21px;
+}
+
+div.brand{
+    align-items: center;
+}
+
+span.delivery{
+    font-size: 90%;
+}
+
+div.days-left{
+    justify-content: flex-end;
+}
+
+div.max-cost{
+    align-items: center;
+}
+
+div.max-cost-price{
+    color: #6065ff;
+    font-weight: 500;
+    font-size: 120%;
+}
+
+h2{
+    margin:0;
+    color:#525252;;
+}
+
+h2.pre{
+    font-family: 'Segoe UI';
+}
+
+p{
+    text-align: justify;
+}
+
+span.colored{
+    color:#6065ff;
+    font-weight: 500;
+}
+
+hr{
+    width: 80%;
+    margin-top: 30px;
+    margin-bottom: 25px;
+    opacity: 0.6;
+}

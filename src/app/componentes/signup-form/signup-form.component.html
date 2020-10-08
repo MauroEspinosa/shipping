@@ -1,0 +1,10 @@
+<div id="signup-container">
+  <h2>SIGNUP</h2>
+  <form [formGroup]="newSignup">
+    <input type="text" formControlName="email" name="email" [placeholder]=placeholders.placeholderemail (blur)="inputChange($event.target.name)" [class.invalid]="newSignup.get('email').invalid && newSignup.get('email').touched">
+    <input type="text" formControlName="password" name="password" [placeholder]=placeholders.placeholderpassword (blur)="inputChange($event.target.name)" [class.invalid]="newSignup.get('password').invalid && newSignup.get('password').touched || newSignup.hasError('notMatching')">
+    <input type="text" formControlName="confirm" name="confirm" [placeholder]=placeholders.placeholderconfirm (blur)="inputChange($event.target.name)" [class.invalid]="newSignup.get('confirm').invalid && newSignup.get('confirm').touched || newSignup.hasError('notMatching')">
+    <div *ngIf="newSignup.hasError('notMatching') && newSignup.get('confirm').dirty"><img class="alert" src="assets/imagenes/alert.png" alt=""><span class="error" > {{newSignup.errors.notMatching}}</span></div>
+  </form>
+</div>
+  

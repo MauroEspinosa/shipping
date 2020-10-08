@@ -1,0 +1,8 @@
+<menu></menu>
+<brandname-header></brandname-header>
+<div id="cards-container">
+    <div [@routeAnimations]="prepareRoute(outlet)">
+        <router-outlet (activate)='onActivate($event)' #outlet="outlet"></router-outlet>
+    </div>
+</div>
+<div id="joinButton" [class.is-visible]="visible" (click)="joinToOrder()"><h2>{{buttonText}}</h2></div>

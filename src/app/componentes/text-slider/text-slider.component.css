@@ -1,0 +1,72 @@
+@media only screen and (min-height: 500px) {
+
+  h2,pre,p{
+    font-family: inherit;
+    color: white;
+  }
+
+  p{
+    font-weight: 100;
+    font-size: 1.2em;
+  }
+
+  div#text-slider{
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 12px;
+    margin-top: 45%;
+  }
+
+
+  h2{
+    font-size: 3em;
+    line-height: 1;
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
+
+  h2#envios{
+    font-size: 2.6em;
+  }
+
+  div#circles{
+    display: flex;
+    align-items: center;
+    position: absolute;
+    bottom: 5%;
+    width: inherit;
+  }
+
+  div.circle{
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+    background-color: white;
+    opacity: 0.5;
+    margin: 3px;
+  }
+
+  .select{
+    opacity: 1 !important;
+    transition: all 2.5s;
+  }
+}
+
+@media only screen and (min-height: 700px) {
+    p{
+      font-size: 1.4em;
+    }
+    
+    div#text-slider{
+      margin-top: 56%;
+    }
+
+    h2#envios{
+      font-size: 2.8em;
+    }
+    
+    div#circles{
+      bottom: 27%;
+    }
+ }

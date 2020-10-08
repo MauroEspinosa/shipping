@@ -1,0 +1,14 @@
+<div id="header">
+    <menu (click)="hideSubmenu()"></menu>
+    <h1 id="name"><i>BUYit</i></h1>
+</div>
+
+<div class="blank"></div>
+
+<router-outlet></router-outlet>
+
+<div id="submenu" *ngIf="hide">
+    <img [routerLink]="['orders']" class="icon" src="assets/imagenes/cart.png" alt="">
+    <img [routerLink]="['info']" class="icon" src="assets/imagenes/user.png" alt="">
+    <img class="icon" src="assets/imagenes/new.png" alt="">
+</div>

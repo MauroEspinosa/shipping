@@ -1,0 +1,55 @@
+@media only screen and (min-height:500px){
+    div#signup-container{
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 50%;
+    }
+
+    h2{
+        font-size: 3em;
+        color: white;
+        margin-bottom: 15px;
+    }
+
+    input{
+        width: 95%;
+        border: none;
+        height: 35px;
+        border-radius: 20px;
+        background-color:#ffffff70;
+        padding-top: 3px;
+        padding-left: 15px;
+        font-size: inherit;
+        margin-bottom: 20px;
+        color: white;
+    }
+
+    ::placeholder {
+        color: #ffffff
+    }
+
+    .invalid{
+        border: 1px solid;
+        background-color: #ffffff45;
+    }
+
+    span.error{
+        color: white;
+    }
+
+    img.alert{
+        width: 20px;
+        vertical-align: bottom;
+    }
+}
+
+@media only screen and (min-height: 700px){
+    div#signup-container{
+        margin-top: 70%;
+    }
+
+    h2{
+        margin-bottom: 39px;
+    }
+}

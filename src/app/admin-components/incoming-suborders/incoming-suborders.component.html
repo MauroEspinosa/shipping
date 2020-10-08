@@ -1,0 +1,21 @@
+<div id="component-container">
+    <h1 class="order-number">Orden {{order.brandOrderNumber}}</h1>
+    <h2 class="brand">ASOS <span class="colored">Envio {{order.delivery}}</span></h2>
+    <div class="suborder-container" *ngFor="let suborder of order.suborders, index as i">
+        <div class="suborder-header">
+            <h3 class="order-number colored">Suborder {{suborder.suborder}}</h3>
+            <button class="finish" (click)="suborderCompleted(suborder.suborder)">Terminar</button>
+        </div>
+        <div #scrolling [id]="suborder.suborder" class="horizontal-scroll-container" (mouseup)="mouseUp()" (mousedown)="mouseDown($event,suborder.suborder)" (mousemove)="mouseMove($event)">
+            <div class="wrapper" *ngFor="let item of suborder.items">
+                <img [src]="item.imageLink" alt="" [ngClass]="{'received': item.received}">
+                <div class="details" [ngClass]="{'received': item.received}"><span>Color: <span [ngClass]="{'received': item.received}" class="colored">{{item.color!="" ? item.color : "null"}}</span></span> <span>Talla: <span class="colored" [ngClass]="{'received': item.received}">{{item.size!="" ? item.size : "null"}}</span></span></div>
+                <button class="confirm" [ngClass]="{'received': item.received}" (click)="itemReceived(suborder.suborder,item.id, item.received)">{{item.received ? "Restaurar" : "Confirmar"}}</button>
+            </div>
+        </div>
+    </div>
+
+<pre *ngIf="order && order.suborders.length==0">La orden esta
+completa. <span class="colored finish" (click)="orderCompleted()">Finalizar</span></pre>
+</div>
+

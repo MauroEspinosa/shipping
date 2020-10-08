@@ -1,0 +1,150 @@
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+}
+  
+/* Track */
+::-webkit-scrollbar-track {
+    background: white;
+}
+  
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+  
+  /* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+::placeholder{
+    color: #B1AFAF;
+    font-family: 'Segoe UI';
+    font-size: 115%;
+}
+
+div#header{
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+h1#order-number{
+    margin: 0;
+    margin-top: 20px;
+}
+
+h2#brand{
+    margin: 0;
+}
+
+span#delivery-type{
+    font-weight: 500;
+    color: #6f67fd;
+}
+
+input[type="text"]{
+    background-color: #F6F4F4;
+    border: 1px solid #898989;
+    border-radius: 20px;
+    height: 25px;
+    padding-left: 10px;
+}
+
+input#store-order-number{
+    width: 220px;
+    margin-right: 20px;
+}
+
+button#finish-order{
+    background-color: #6f67fd;
+}
+
+div#grid {
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+    display: grid;
+    grid-template-areas: "item item item";
+    grid-auto-rows: auto;
+    justify-content: space-between;
+    height: 80vh;
+    overflow: scroll;
+}
+
+div.wrapper{
+    position: relative;
+}
+
+div.item-info{
+    position: absolute;
+    z-index: 1;
+    margin-top: 35px;
+    color: white;
+    font-size: larger;
+    font-weight: 100;
+    padding-top: 10px;
+    padding-left: 10px;
+    width: calc(100% - 10px);
+    padding-bottom: 10px;
+    background: rgb(0,0,0);
+    background: linear-gradient(180deg, rgba(0,0,0,0.47) 0%, rgba(0,0,0,0) 100%);
+}
+
+img.item{
+    width: 200px;
+    margin: auto;
+    margin-top: 35px;
+    filter: brightness(0.92);
+}
+
+button.restore{
+    background-color: #a7a7a7 !important;
+}
+
+img.reviewed{
+    filter: grayscale();
+}
+
+button{
+    border: none;
+    color: white;
+    padding-bottom: 7px;
+    padding-top: 7px;
+    width: 100px;
+    border-radius: 23px;
+    font-weight: 600;
+    box-shadow: 0px 0px 5px 0px #5f5e5e;
+}
+    
+button.acept{
+    background-color: #6f67fd;
+    margin-left: 50px;
+    margin-top: -13px;
+    position: absolute;
+}
+
+button.reject{
+    background-color: #a2a2a2d4;
+    margin-left: 50px;
+    margin-top: -47px;
+    position: absolute;
+}
+
+prompt{
+    z-index: 2;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+pre{
+    font-family: 'Segoe UI';
+    margin-top: 20%;
+    text-align: center;
+}

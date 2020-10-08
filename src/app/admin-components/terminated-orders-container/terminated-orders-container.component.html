@@ -1,0 +1,14 @@
+<div id="container">
+    <h1>Ordernes Realizadas</h1>
+    <div id="inner-container">
+        <ul>
+            <li routerLinkActive="active-link" [routerLink]="['/admin', {outlets:{primary:['realizadas','en-camino']}}]">En camino</li>
+            <li routerLinkActive="active-link" [routerLink]="['/admin', {outlets:{primary:['realizadas','recibidas']}}]">Recibidas</li>
+        </ul>
+        <div id="search-bar">
+            <input type="text" (keyup.enter)="search()" [(ngModel)]="number" name="" id="" placeholder="Numero de orden o id de rastreo">
+            <button (click)="search()">Buscar</button>
+        </div>
+    </div>
+    <router-outlet></router-outlet>
+</div>

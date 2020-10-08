@@ -1,0 +1,17 @@
+<ng-container *ngIf="userData.data.directions.length > 0">
+    <div *ngFor="let direction of userData.data.directions, index as i" class="address-container" [routerLink]="['/perfil/add-direction', i]">
+        <div class="address">
+            <h2 class="address-name">{{direction.nombre | capitalLetter}}</h2>
+            <p class="address-detail">{{direction.calle | capitalLetter}}</p>
+            <p class="address-detail">{{direction.colonia | capitalLetter}}</p>
+            <p class="address-detail">{{direction.cp}} {{direction.delegacion | capitalLetter}}</p>
+        </div>
+        <div class="map">
+            <img class="map" src="assets/imagenes/map.jpg" alt="">
+        </div>
+    </div>
+</ng-container>
+
+<div *ngIf="userData.data.directions.length == 0" id="no-directions">
+    <p class="highlight">Aun no has agregado ninguna dirección de entrega. Pulsa sobre el icono del lápiz para agregar una</p>
+</div>

@@ -1,0 +1,17 @@
+<div id="hamburguer-container">
+  <div id="hamburguer" (click)="state=!state" [ngClass]="{'menu-change':modifyMenu}">
+    <div id="line-top" [ngClass]="{'hamburger-lines-change':modifyMenu}"></div>
+    <div id="line-middle" [ngClass]="{'hamburger-lines-change':modifyMenu}"></div>
+    <div id="line-bottom" [ngClass]="{'hamburger-lines-change':modifyMenu}"></div>
+</div>
+</div>
+
+<div id="main-menu"  (click)="state=!state" [@openClose]="state ? 'open' : 'closed'">
+  <div id="links-container">
+    <h2 routerLink="/perfil/orders">PERFIL</h2>
+    <h2 routerLink="/buscar">BUSCAR</h2>
+    <h2 *ngIf="!auth.isLogged" routerLink="/login">LOG IN</h2>
+    <h2 *ngIf="auth.isLogged" (click)="logout()">LOG OUT</h2>
+    <h2 id="brand-name"><b><i>BUYit</i></b></h2>
+  </div>
+</div>

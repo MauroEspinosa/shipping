@@ -1,0 +1,55 @@
+h2{
+    margin: 0;
+    margin-left: 5%;
+    margin-bottom: 5%;
+}
+
+div#user-info{
+    background-color: #6065ff;
+    width: 83%;
+    padding: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.3);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.3);
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.3);
+}
+
+div#photo-info{
+    display: flex;
+}
+
+div#profile-picture{
+    width: 30%;
+    margin-right: 15px;
+}
+
+img{
+    vertical-align: middle;
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+div#paragraphs{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+p.info{
+    margin:0;
+    margin-top: 5px;
+}
+
+p#name{
+    font-weight: 500;
+    font-size: 105%;
+}
+
+p#mail, p#number{
+    font-weight: 100;
+}

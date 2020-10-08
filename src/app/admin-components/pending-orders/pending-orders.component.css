@@ -1,0 +1,77 @@
+h1#section{
+    margin-left: calc(12.5% + 18px);
+    margin-top: 50px;
+}
+
+div.card{
+    height: auto;
+    background-color: #F6F4F4;
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(218, 19, 19, 0.51);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.51);
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.51);
+    border-radius: 16px;
+    margin: 20px;
+    cursor: pointer;
+}
+  
+div.line{
+    display: flex;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: space-between;
+}
+
+div.info-container{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-weight: 100;
+}
+
+div.right-sided{
+    justify-content: flex-end;
+    font-size: 100%;
+}
+  
+span.brand-name{
+    font-weight: 600;
+}
+  
+span.colored{
+    color: #6065ff;
+    font-weight: 400;
+}
+
+span.delivery-type{
+    font-size: 85%;
+}
+
+span.tiny-text{
+    font-size: 85%;
+}
+
+.container {
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+    display: grid;
+    grid-template-areas: "a a";
+    grid-auto-rows: auto;
+}
+
+pre{
+    font-family: 'Segoe UI';
+    font-size: 200%;
+    margin-top: 17%;
+    text-align: center;
+}
+
+@media only screen and (max-width:1200px){
+    .container {
+        width: 85%;
+    } 
+
+    h1#section{
+        margin-left: calc(7.5% + 18px);
+    }
+}

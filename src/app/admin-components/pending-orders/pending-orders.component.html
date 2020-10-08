@@ -1,0 +1,15 @@
+<h1 id="section">Ordenes Pendientes</h1>
+
+<div class="container" *ngIf="orders.finishedOrders">
+    <div class="card" *ngFor="let order of orders.finishedOrders, index as i" [routerLink]="['/admin', {outlets:{primary:['orden',order._id]}}]">
+        <div class="info-container">
+            <div class="line"><span class="brand-name">ASOS</span> <div><span>Cargo por envio: <span class="colored">undefined</span></span></div></div>
+            <div class="line"><span class="delivery-type colored">Envio {{order.delivery}}</span> <div><span>Numero de items: <span class="colored">{{itemsCuantity(i)}}</span></span></div></div>
+            <div class="line right-sided"> <div><span >Numero de integrantes: <span class="colored">{{order.suborders.length}}</span></span></div></div>
+            <div class="line"><span class="tiny-text">Finalizo hace 1 dia</span> <div><span [title]="order._id" class="colored">Orden {{order._id | uppercase | truncate:10}}</span></div></div>
+        </div>
+    </div>
+</div>
+
+<pre *ngIf="orders.finishedOrders && orders.finishedOrders.length==0">No hay guias 
+pendientes</pre>

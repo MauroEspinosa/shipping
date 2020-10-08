@@ -1,0 +1,19 @@
+h3#brand-name{
+    font-style: italic;
+    margin: 0;
+    font-size: 2.45em;
+    color: white;
+}
+
+span#slogan{
+    margin-left: 15px;
+    color: white;
+}
+
+span#from{
+    font-weight: 100;
+}
+
+span#store{
+    font-weight: 500;
+}

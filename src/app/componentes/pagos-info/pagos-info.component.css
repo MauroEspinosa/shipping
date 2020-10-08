@@ -1,0 +1,76 @@
+div#toggle-slide-container{
+    width:83%;
+    margin-left: auto;
+    margin-right: auto;
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.51);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.51);
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.51);
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 100px;
+}
+
+div.clickable{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+div.toggle-slide{
+    max-height: 0px;
+    overflow: hidden;
+    transition: max-height 0.2s;
+    margin-bottom: 5px;
+}
+
+span.item-name{
+    font-size: 110%;
+}
+
+p.item-content{
+    margin-bottom: 10px;
+    margin-top: 6px;
+}
+
+img.arrow{
+    transition: all 0.3s;
+}
+
+span.num-order, span.day{
+    color: #6065ff;;
+}
+
+div.separator{
+    height: 1px;
+    background-color: #aaaaaa;
+    margin-top: 3px;
+}
+
+div#no-payments{
+    color: #454545;
+    width: 87%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: justify;
+    margin-bottom: 75px;
+}
+
+p.highlight{
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+img#paypal{
+    margin-left: 30%;
+    width: 40%;
+}
+
+.is-visible{
+    max-height: 265px !important;
+    transition: max-height 0.4s ease-out !important;
+}
+
+.rotate{
+    transform: rotate(-180deg);
+    transition: all 0.3s;
+}

@@ -1,0 +1,15 @@
+<div id="search-container">
+<pre><h2>BUSCAR
+POR
+TIENDA
+</h2></pre>
+
+<select [(ngModel)]="store" name="" id="" (change)="selectStore()">
+  <option value="asos"><span class="opticion">ASOS</span></option>
+  <option value="shein"><span class="opticion">SHEIN</span></option>
+  <option value="boohoo"><span class="opticion">BOOHOO</span></option>
+</select>
+
+<p *ngIf="!auth.isLogged"><a routerLink="/login">Iniciar sesion</a></p>
+<p *ngIf="auth.isLogged"><a (click)="logout()">Cerrar sesion</a></p>
+</div>

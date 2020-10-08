@@ -1,0 +1,8 @@
+<div class="container">
+  <menu></menu>
+  <image-header></image-header>
+  <div [@routeAnimations]="prepareRoute(outlet)" >
+    <router-outlet #outlet="outlet"></router-outlet>
+  </div>
+  <action-button></action-button>
+</div>

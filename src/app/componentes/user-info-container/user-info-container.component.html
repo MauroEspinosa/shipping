@@ -1,0 +1,12 @@
+<ng-container *ngIf="userInfo.data">
+    <div class="section"><span class="section">Tu informacion</span><img routerLink="/perfil/edit-info"  class="edit" src="assets/imagenes/pencil.png" alt=""></div>
+    <user-info></user-info>
+    <hr>
+    <div class="section"><span class="section">Direcciones</span><img routerLink="/perfil/add-direction" class="edit" src="assets/imagenes/pencil.png" alt=""></div>
+    <direccion></direccion>
+    <hr>
+    <div class="section"><span class="section">Pagos</span></div>
+    <pagos-info></pagos-info>    
+</ng-container>
+
+<div *ngIf="!userInfo.data" class="loader">Loading...</div>

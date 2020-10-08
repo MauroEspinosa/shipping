@@ -1,0 +1,49 @@
+<div *ngIf="!loading" id="form-container">
+    <span class="section">Editar informacion</span>
+    <form [formGroup]="addDirection" (ngSubmit)="onSubmit()">
+        <fieldset [class.invalid]="addDirection.get('nombre').invalid && addDirection.get('nombre').touched">
+            <legend>Nombre:</legend>
+            <input formControlName="nombre" class="info" type="text" placeholder="Casa, oficina, etc.">
+       </fieldset>
+
+       <fieldset [class.invalid]="addDirection.get('calle').invalid && addDirection.get('calle').touched">
+            <legend>Direccion:</legend>
+            <input formControlName="calle" class="info" type="text" placeholder="Calle, numero interior, numero interior, etc. ">
+       </fieldset>  
+    
+       <fieldset [class.invalid]="addDirection.get('colonia').invalid && addDirection.get('colonia').touched">
+            <legend>Colonia:</legend>
+            <input formControlName="colonia" class="info" type="email" placeholder="Narvarte, Roma sur, etc.">
+        </fieldset>
+    
+        <fieldset [class.invalid]="addDirection.get('cp').invalid && addDirection.get('cp').touched">
+            <legend>Codigo postal:</legend>
+            <input formControlName="cp" class="info" type="text" placeholder="06350, 55280, etc.">
+            <span class="error" *ngIf="addDirection.get('cp').hasError('invalidCP') && addDirection.get('cp').touched">Envio no disponible en esta zona</span>
+       </fieldset>
+
+       <fieldset [class.invalid]="addDirection.get('delegacion').invalid && addDirection.get('delegacion').touched">
+            <legend>Alcaldia/Municipio:</legend>
+            <input formControlName="delegacion" class="info" type="text" placeholder="Coyoacán, Cuauhtémoc, etc.">
+       </fieldset>
+
+       <input type="hidden" formControlName="latitud">
+       <input type="hidden" formControlName="longitud">
+    
+        <div id="location-container" (click)="geolocation()">
+            <ng-container *ngIf="!geolocated"  [@fade-in-out]>
+                <p id="p-location">Usa tu ubicacion para un posicionamiento mas exacto</p>
+                <div id="location">
+                    <h2 id="h-location">Usar mi ubicacion</h2><img id="gps" src="assets/imagenes/gps.png" alt="">
+                </div>
+            </ng-container>
+
+            <p *ngIf="geolocated" [@fade-in-out]>{{addDirection.valid ? 'Listo! Tenemos tu ubicacion.' : 'Listo! Tenemos tu ubicaion. Llena los campos restantes'}}</p>
+        </div>
+
+        <input type="submit" value="Guardar cambios">
+    </form>
+</div>
+
+<div *ngIf="loading" class="loader">Loading...</div>
+

@@ -1,0 +1,23 @@
+ul#menu{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    color: white;
+    font-size: 160%;
+}
+
+li.menu-option{
+    margin-top: 25px;
+    cursor: pointer;
+}
+
+img.menu-option{
+    vertical-align: bottom;
+    width: 30px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.active-link{
+    text-decoration: underline;
+}

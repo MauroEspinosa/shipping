@@ -1,0 +1,14 @@
+<div id="user-info">
+    <div id="photo-info">
+        <div id="profile-picture">
+            <img src="assets/imagenes/captura.png" alt="">
+        </div>
+        <div id="paragraphs">
+            <div>
+                <p class="info" id="name">{{userData.data.info.name ? (userData.data.info.name | titlecase) : 'Completar nombre'}}</p>
+                <p class="info" id="mail">{{userData.data.info.email ? userData.data.info.email :'Completar email'}}</p>  
+                <p class="info" id="number">{{userData.data.info.phone ? userData.data.info.phone : 'Completar numero'}}</p>
+            </div>
+        </div>
+    </div>
+</div>

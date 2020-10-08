@@ -1,0 +1,105 @@
+div#container {
+    width: 85%;
+    margin-left: auto;
+    display: grid;
+    grid-template-areas: "a a";
+    grid-auto-rows: auto;
+    grid-gap: 30px;
+    margin-top: -25px;
+}
+
+h2.no-results{
+    text-align: center;
+    margin-top: 15%;
+}
+
+div.card{
+    height: auto;
+    background-color: #F6F4F4;
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(218, 19, 19, 0.51);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.51);
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.51);
+    border-radius: 16px;
+    cursor: pointer;
+    position: relative;
+    max-width: 27vw;
+}
+
+div.info-container{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-weight: 100;
+    margin-bottom: 35px;
+}
+  
+div.line{
+    display: flex;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: space-between;
+}
+
+div.confirm-button{
+    position: absolute;
+    bottom: 20px;
+    left: 15px;
+}
+
+div.right-sided{
+    justify-content: flex-end;
+    font-size: 100%;
+}
+
+span.brand-name{
+    font-weight: 600;
+}
+  
+span.colored{
+    color: #6065ff;
+    font-weight: 400;
+}
+
+span.delivery-type{
+    font-size: 85%;
+}
+
+button{
+    border: none;
+    color: white;
+    padding-bottom: 7px;
+    padding-top: 7px;
+    width: 115%;
+    border-radius: 23px;
+    font-weight: 600;
+    box-shadow: 0px 0px 5px 0px #5f5e5e;
+    background-color: #6f67fd;
+}
+
+.selected{
+    font-weight: 600 !important;
+    transition: all 0.2s;
+}
+
+.notReceived{
+    color: rgb(241, 104, 104) !important;
+}
+
+pre{
+    font-family: 'Segoe UI';
+    font-size: 200%;
+    margin-top: 15%;
+    text-align: center;
+}
+
+
+@media only screen and (min-width: 600px) and (max-width: 1250px){
+    div#container{
+        width: 100%;
+        margin-top: 0px;
+    }
+
+    div.card{
+        max-width: 30vw;
+    }
+}

@@ -1,0 +1,42 @@
+<div id="text-slider">
+
+<div (swipeleft)="swipeLeft()" (swiperight)="swipeRight()" >
+<div [@swipeTrigger]="{value:'*',params:{EX:enterTranslateX, LX:leaveTranslateX}}" class="iteracion" *ngIf="iteracion==0">
+  <h2 id="envios">Envios Express
+Gratis</h2>
+    
+    <p>Ciertas tiendas ofrecen envíos premium o express al alcanzar cierto monto de compra. Únete a un pedido para sumar tu monto o crea tu pedido y deja que otros se unan </p>
+</div>
+
+<div [@swipeTrigger]="{value:'*',params:{EX:enterTranslateX, LX:leaveTranslateX}}" class="iteracion" *ngIf="iteracion==1">
+  <h2>Compartir 
+Gastos 
+de envio</h2>
+    
+    <p>Únete a otras personas para hacer un pedido en conjunto a alguna tienda online y divide los gastos del envió </p>
+</div>
+
+<div [@swipeTrigger]="{value:'*',params:{EX:enterTranslateX, LX:leaveTranslateX}}" class="iteracion" *ngIf="iteracion==2">
+  <h2>Envios
+Seguros</h2>
+    
+    <p>Olvídate de que tu pedido no llegue o tarde mucho, gracias a que trabajamos únicamente con los envíos premium rastreados que ofrecen las tiendas</p>
+</div>
+
+
+<div [@swipeTrigger]="{value:'*',params:{EX:enterTranslateX, LX:leaveTranslateX}}" class="iteracion" *ngIf="iteracion==3">
+  <h2>Pagos via
+PayPal
+  </h2>
+    
+    <p>Olvídate de que tu pedido no llegue o tarde mucho, gracias a que trabajamos únicamente con los envíos premium rastreados que ofrecen las tiendas</p>
+</div>
+</div>
+
+<div id="circles">
+  <div class="circle" [class.select]="iteracion==0"></div>
+  <div class="circle" [class.select]="iteracion==1"></div>
+  <div class="circle" [class.select]="iteracion==2"></div>
+  <div class="circle" [class.select]="iteracion==3"></div>
+</div>
+</div>

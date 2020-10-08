@@ -1,0 +1,28 @@
+div#container{
+    background-color: rgb(96, 101, 255);
+    height: 30vh;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+h2{
+    margin: 0;
+    margin-top: -40px;
+    font-size: xxx-large;
+}
+
+span#from-brand{
+    position: absolute;
+    bottom: 40px;
+    right: 25px;
+    font-weight: 100;
+    font-size: 119%;
+}
+
+span#brand{
+    font-size: 110%;
+    font-weight: 600;
+}

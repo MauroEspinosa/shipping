@@ -1,0 +1,136 @@
+/* width */
+::-webkit-scrollbar {
+    width: 0px
+}
+  
+/* Track */
+::-webkit-scrollbar-track {
+    background: white;
+}
+  
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+  
+  /* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+div#component-container{
+    margin-top: 30px;
+    height: calc(100vh - 40px);
+    overflow: scroll;
+    width: 85%;
+    max-width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h1.order-number{
+    margin: 0;
+}
+
+h2.brand{
+    margin-top: 0;
+}
+
+div.suborder-container{
+    margin-bottom: 35px;
+    transition: all 0.2s;
+}
+
+div.suborder-header{
+    display: flex;
+}
+
+h3.order-number{
+    margin: 0;
+    margin-bottom: 15px;
+}
+
+button.finish{
+    color: #6f67fd;
+    border: 1px solid;
+    height: 25px;
+    margin-left: 15px;
+    background-color: white;
+    padding-bottom: 0;
+    padding-top: 0;
+    box-shadow: none;
+}
+
+div.horizontal-scroll-container{
+    display: flex;
+    padding-bottom: 7px;
+    overflow: hidden;
+    cursor: grab;
+}
+
+div.wrapper{
+    width: 173px;
+    min-width: 173px;
+    margin-right: 35px;
+}
+
+img{
+    width: 100%;
+    filter: brightness(0.92);
+}
+
+img.received{
+    filter: grayscale() !important;
+}
+
+div.details{
+    display: flex;
+    justify-content: space-between;
+    font-size: 105%;
+}
+
+div.received{
+    color: gray !important;
+}
+
+.colored{
+    color: #6065ff;
+    font-weight: 500;
+}
+
+span.received{
+    color: gray !important;
+}
+
+button{
+    border: none;
+    padding-bottom: 7px;
+    padding-top: 7px;
+    border-radius: 23px;
+    font-weight: 600;
+    box-shadow: 0px 0px 5px 0px #5f5e5e;
+}
+
+button.confirm{
+    background-color: #6f67fd;
+    margin-top: 10px;
+    color: white;
+    width: 100%;
+}
+
+button.received{
+    background-color: #a7a7a7 !important;
+}
+
+pre{
+    font-family: 'Segoe UI';
+    font-size: 200%;
+    margin-top: 17%;
+    text-align: center;
+}
+
+span.finish{
+    cursor: pointer;
+}
+

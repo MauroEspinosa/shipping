@@ -1,0 +1,136 @@
+@media only screen and (min-height:1px){
+    ::placeholder{
+        color: #b4b4b4
+    }
+
+    div#form-container{
+        width: 82%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 20%;
+    }
+    
+    span.section{
+        font-size: 145%;
+        font-weight: 700;
+    }
+    
+    form{
+        margin-top: 15px;
+    }
+    
+    fieldset{
+        border: 1px solid #6065ff;
+        padding: 0;
+        border-radius: 10px;
+        padding-left: 20px;
+        color: #424242;;
+        margin-bottom: 10px;
+    }
+    
+    input.info{
+        width: 100%;
+        padding: 0;
+        height: 20px;
+        margin-left: -10px;
+        margin-bottom: 1px;
+        border-radius: 10px;
+        border: none;
+        font-size: 100%;
+        color: #8f8f8f;
+    }
+    
+    input[type=submit]{
+        width: 98%;
+        height: 27px;
+        border: 1px solid #6065ff;
+        margin-top: 20px;
+        font-size: 110%;
+        margin-left: 1%;
+        color: #6065ff;
+        background-color: transparent;
+    }
+    
+    div#number{
+        align-items: center;
+        display: flex;
+    }
+    
+    img#alert{
+        width: 20px;
+        margin-right: 5px;
+        margin-top: -8px;
+    }
+
+    .invalid{
+        border: 1px solid #ff1212;
+    }
+
+    .loader,.loader:before,.loader:after {
+        border-radius: 50%;
+        width: 2.5em;
+        height: 2.5em;
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both;
+        -webkit-animation: load7 1.8s infinite ease-in-out;
+        animation: load7 1.8s infinite ease-in-out;
+      }
+      .loader {
+        color: #6065ff;
+        font-size: 10px;
+        margin: 50% auto;
+        position: relative;
+        text-indent: -9999em;
+        -webkit-transform: translateZ(0);
+        -ms-transform: translateZ(0);
+        transform: translateZ(0);
+        -webkit-animation-delay: -0.16s;
+        animation-delay: -0.16s;
+      }
+      .loader:before,.loader:after {
+        content: '';
+        position: absolute;
+        top: 0;
+      }
+      .loader:before {
+        left: -3.5em;
+        -webkit-animation-delay: -0.32s;
+        animation-delay: -0.32s;
+      }
+      .loader:after {
+        left: 3.5em;
+      }
+      @-webkit-keyframes load7 {
+        0%,
+        80%,
+        100% {
+          box-shadow: 0 2.5em 0 -1.3em;
+        }
+        40% {
+          box-shadow: 0 2.5em 0 0;
+        }
+      }
+      @keyframes load7 {
+        0%,
+        80%,
+        100% {
+          box-shadow: 0 2.5em 0 -1.3em;
+        }
+        40% {
+          box-shadow: 0 2.5em 0 0;
+        }
+      }
+}
+
+@media only screen and (min-height:700px){
+    div#form-container{
+        width: 82%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 35%;
+    } 
+
+    .loader {
+        margin: 65% auto;
+    }
+}

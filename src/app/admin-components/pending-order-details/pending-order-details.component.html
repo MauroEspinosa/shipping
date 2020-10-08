@@ -1,0 +1,53 @@
+<div id="header">
+    <div>
+        <h1 [title]="orderId" id="order-number">Orden {{orderId | truncate:10 | uppercase}}</h1>
+        <h2 id="brand">{{orders.finishedOrders[orderIndex].brand | uppercase}} <span id="delivery-type">Envio {{orders.finishedOrders[orderIndex].delivery | capitalLetter}}</span></h2>
+    </div>
+
+    <div>
+        <form [formGroup]="brandOrderNumber" (ngSubmit)="finishOrder()">
+            <input formControlName="orderNumber" type="text" id="store-order-number" placeholder="Numero de orden">
+            <button type="submit" id="finish-order">Confirmar</button>
+        </form>
+    </div>
+</div>
+
+<prompt *ngIf="prompt" [@fade-in-out]>
+    <h2 *ngIf="promptType=='reject'" >Selecciona la razon</h2>
+    <h2 *ngIf="promptType=='confirm'" >Introduce el precio</h2>
+    <form *ngIf="promptType=='reject'" [formGroup]="cancelReason" (ngSubmit)="rejectItem()">
+        <select formControlName="reason">
+            <option value="" disabled>Sin seleccion</option>
+            <option value="stock">No hay stock</option>
+            <option value="size">No hay talla</option>
+            <option value="lowStock">Baja disponibilidad</option>
+        </select><br>
+        <button type="submit" class="prompt-confirm">Continuar</button>
+        <button  type="button" class="prompt-cancel" (click)="hidePrompt()">Cancelar</button>
+    </form>
+        
+    <form *ngIf="promptType=='confirm'" [formGroup]="itemPrice" (ngSubmit)="confirmItem()">
+        <input type="number" formControlName="price" placeholder="Precio">
+        <button type="submit" class="prompt-confirm">Continuar</button>
+        <button type="button" class="prompt-cancel" (click)="hidePrompt()">Cancelar</button>
+    </form>
+</prompt>
+
+<div id="grid">
+    <div class="wrapper" *ngFor="let item of orderItems">
+        <div>
+            <div class="item-info">
+                <span>Color: {{item.color ? (item.color | capitalLetter) : 'Unico'}}</span><br>
+                <span>Talla: {{item.size ? (item.size | uppercase ) : 'Unica'}}</span><br>
+                <span>{{item.details}}</span>
+            </div>
+            <a [href]="item.link" target="_blank"><img [ngClass]="{'reviewed':(item.confirmed || item.rejected)}" class="item" [src]="item.imageLink" alt=""></a>
+        </div>
+        
+        <ng-container *ngIf="!(item.confirmed || item.rejected)">
+            <button (click)="showPrompt(item.suborderId, item._id, item.suborderMainIndex, item.itemMainIndex, 'reject')" [disabled]="item.confirmed || item.rejected" [ngClass]="{'reviewed':(item.confirmed || item.rejected)}" class="reject">Rechazar</button>
+            <button (click)="showPrompt(item.suborderId, item._id, item.suborderMainIndex, item.itemMainIndex, 'confirm')"  [disabled]="item.confirmed || item.rejected" [ngClass]="{'reviewed':(item.confirmed || item.rejected)}" class="acept">Confirmar</button>
+        </ng-container>
+            <button (click)="restoreItem(item.suborderId, item._id, item.suborderMainIndex, item.itemMainIndex)" *ngIf="item.confirmed || item.rejected" class="acept restore">Restaurar</button>
+    </div>
+</div>
